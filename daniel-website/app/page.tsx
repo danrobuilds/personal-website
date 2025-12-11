@@ -59,17 +59,6 @@ export default function Home() {
   const toggle = (id: string) =>
     setOpen((prev) => ({ ...prev, [id]: !prev[id] }));
 
-  useEffect(() => {
-    // If coming back from a project page, open the projects section.
-    // Otherwise, the default state is { about: true }.
-    console.log(new URL(document.referrer).pathname.split("/").pop());
-    if (document.referrer && document.referrer.includes("projects")) {
-      console.log("projects");
-      setOpen({ projects: true });
-    }
-  }, []);
-
-
   return (
     <div className="flex min-h-screen items-start justify-center bg-white text-neutral-800">
       <main className="w-full max-w-5xl px-6 py-24 sm:px-10 sm:py-56">
