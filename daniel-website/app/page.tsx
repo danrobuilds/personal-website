@@ -72,10 +72,18 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen items-start justify-center bg-white text-neutral-800">
-      <main className="w-full max-w-5xl px-10 py-56">
+      <main className="w-full max-w-5xl px-6 py-24 sm:px-10 sm:py-56">
         {/* ↑ Change `py-24` above to adjust vertical start spacing */}
-        <div className="flex items-start justify-between gap-10">
-          <div className="flex max-w-xl flex-col gap-6 font-serif text-2xl font-normal leading-8">
+        <div className="flex flex-col items-center justify-between gap-10 md:flex-row md:items-start">
+          <Image
+            src="/oak_tree.svg"
+            alt="Oak tree illustration"
+            width={360}
+            height={360}
+            className="w-52 shrink-0 md:w-80 lg:w-96"
+            priority
+          />
+          <div className="flex max-w-xl flex-col gap-6 font-serif text-2xl font-normal leading-8 md:order-first">
             {/* Fixed-position top section with toggleable content */}
             <div className="flex flex-col gap-2">
               <button
@@ -189,14 +197,6 @@ export default function Home() {
               );
             })}
           </div>
-          <Image
-            src="/oak_tree.png"
-            alt="Oak tree illustration"
-            width={360}
-            height={360}
-            className="hidden w-80 shrink-0 md:block lg:w-96"
-            priority
-          />
         </div>
       </main>
     </div>
