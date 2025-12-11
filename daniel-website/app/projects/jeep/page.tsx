@@ -14,14 +14,14 @@ import bayWiring3 from "./media/bay_wiring3.jpeg";
 import motorTransmission from "./media/motor_transmission.jpeg";
 import charging from "./media/charging.jpeg";
 
+const jeepVideoSrc = "/media/Jeep.mp4";
+
 type MediaItem =
   | { id: number; type: "image"; src: StaticImageData; alt: string }
   | { id: number; type: "video"; src: string; alt: string };
 
 /* EDIT for image sizes*/
 const THUMB_WIDTH = 150;
-
-const jeepVideoSrc = "/media/Jeep.mp4";
 
 const mediaItems: MediaItem[] = [
   { id: 0, type: "image", src: motorMount, alt: "Motor mount mockup" },
@@ -34,6 +34,7 @@ const mediaItems: MediaItem[] = [
   { id: 8, type: "image", src: bayWiring3, alt: "Bay wiring 2" },
   { id: 9, type: "image", src: motorTransmission, alt: "Motor transmission" },
   { id: 10, type: "image", src: charging, alt: "Charging" },
+  { id: 11, type: "video", src: jeepVideoSrc, alt: "Jeep EV video" },
 ];
 
 export default function ProjectAtlasPage() {
@@ -55,7 +56,7 @@ export default function ProjectAtlasPage() {
         <header className="space-y-2">
           <h1 className="text-2xl font-normal">Jeep EV Conversion</h1>
           <p className="text-lg text-black/70">
-            In highschool, I rebuilt a junkyard 2001 Jeep Cherokee into a fully functional electric vehicle. 
+            In high school, I rebuilt a junkyard 2001 Jeep Cherokee into a fully functional electric vehicle. 
             It took me a year and a half working on the weekends while following online blogs, youtube videos, and going to great lengths to source used components on a tight budget. 
             I designed the entire high-voltage architecture including the powertrain, custom 135V / 26 kWh lithium-ion battery pack, main contactor stack, and protection/fusing systems. 
             I assembled the battery pack from salvaged Nissan Leaf modules and integrated a CANbus BMS for monitoring, balancing, and safety. 
@@ -76,7 +77,7 @@ export default function ProjectAtlasPage() {
           <div className="flex justify-start">
             <button
               type="button"
-              onClick={() => setActiveId(9)}
+              onClick={() => setActiveId(11)}
               className="group overflow-hidden rounded-lg bg-gray-50 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-md"
               style={{ width: `${THUMB_WIDTH*3}px`, height: `${THUMB_WIDTH * 2}px` }}
               aria-label="Expand Jeep EV video"
