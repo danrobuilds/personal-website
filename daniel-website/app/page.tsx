@@ -21,7 +21,7 @@ const sections: Section[] = [
     id: "about",
     title: "about",
     items: [
-      { label: "Hey! I'm Daniel. I study ECE at Harvard and grew up in the Bay Area, California. I'm currently focused on building products to help the people around me. When I'm not working on something new, you’ll probably find me mountain biking, surfing, or playing the piano. Always excited to meet people, so feel free to reach out!", href: "/" },
+      { label: "Hey! I'm Daniel. I study ECE at Harvard and grew up in the Bay Area, California. I'm currently focused on building products to help the people around me. When I'm not working on something new, you’ll probably find me mountain biking, surfing, or playing the piano. Always excited to meet people, so feel free to reach out!"},
       { label: "Email", href: "mailto:drosario@college.harvard.edu", inline: true },
       { label: "LinkedIn", href: "https://www.linkedin.com/in/daniel-rosario-035993228/", inline: true },
       { label: "Github", href: "https://github.com/danrobuilds", inline: true },
@@ -42,10 +42,10 @@ const sections: Section[] = [
     id: "work",
     title: "experience",
     items: [
-      { label: "Fellow with Critical Ventures", href: "/" },
-      { label: "Roberts Family Fellow @ Harvard", href: "/" },
-      { label: "Prev ML @ ABLSoft", href: "/" },
-      { label: "Prev Product @ EBSCO", href: "/" },
+      { label: "Fellow with Critical Ventures"},
+      { label: "Roberts Family Fellow @ Harvard"},
+      { label: "Prev ML @ ABLSoft"},
+      { label: "Prev Product @ EBSCO"},
 
 
     ],
@@ -96,32 +96,43 @@ export default function Home() {
                   {sections[0].items
                     .filter((item) => !item.inline)
                     .map((item) => (
-                      <Link
-                        key={item.label + item.href}
-                        href={item.href ?? "/"}
-                        className="transition-opacity hover:opacity-70"
-                      >
-                        <span className="mr-2 text-xl align-middle">↳</span>
-                        <span className="align-middle">{item.label}</span>
-                      </Link>
+                      item.href ? (
+                        <Link
+                          key={item.label + item.href}
+                          href={item.href}
+                          className="transition-opacity hover:opacity-70"
+                        >
+                          <span className="mr-2 text-xl align-middle">↳</span>
+                          <span className="align-middle">{item.label}</span>
+                        </Link>
+                      ) : (
+                        <div key={item.label}>
+                          <span className="mr-2 text-xl align-middle">↳</span>
+                          <span className="align-middle">{item.label}</span>
+                        </div>
+                      )
                     ))}
-                  {sections[0].items.some((item) => item.inline) && (
-                    <div className="flex flex-wrap items-center gap-1">
-                      {sections[0].items
-                        .filter((item) => item.inline)
-                        .map((item, index, arr) => (
-                          <span key={item.label + item.href} className="inline-flex items-center">
-                            <Link
-                              href={item.href ?? "/"}
-                              className="transition-opacity hover:opacity-70"
-                            >
-                              {item.label}
-                            </Link>
-                            {index < arr.length - 1 && <span>,&nbsp;</span>}
-                          </span>
-                        ))}
-                    </div>
-                  )}
+                      {sections[0].items.some((item) => item.inline) && (
+                        <div className="flex flex-wrap items-center gap-1">
+                          {sections[0].items
+                            .filter((item) => item.inline)
+                            .map((item, index, arr) => (
+                              <span key={item.label + (item.href || "")} className="inline-flex items-center">
+                                {item.href ? (
+                                  <Link
+                                    href={item.href}
+                                    className="transition-opacity hover:opacity-70"
+                                  >
+                                    {item.label}
+                                  </Link>
+                                ) : (
+                                  <span>{item.label}</span>
+                                )}
+                                {index < arr.length - 1 && <span>,&nbsp;</span>}
+                              </span>
+                            ))}
+                        </div>
+                      )}
                 </div>
               </div>
             </div>
@@ -154,27 +165,38 @@ export default function Home() {
                       {section.items
                         .filter((item) => !item.inline)
                         .map((item) => (
-                          <Link
-                            key={item.label + item.href}
-                            href={item.href ?? "/"}
-                            className="transition-opacity hover:opacity-70"
-                          >
-                            <span className="mr-2 text-xl align-middle">↳</span>
-                            <span className="align-middle">{item.label}</span>
-                          </Link>
+                          item.href ? (
+                            <Link
+                              key={item.label + item.href}
+                              href={item.href}
+                              className="transition-opacity hover:opacity-70"
+                            >
+                              <span className="mr-2 text-xl align-middle">↳</span>
+                              <span className="align-middle">{item.label}</span>
+                            </Link>
+                          ) : (
+                            <div key={item.label}>
+                              <span className="mr-2 text-xl align-middle">↳</span>
+                              <span className="align-middle">{item.label}</span>
+                            </div>
+                          )
                         ))}
                       {section.items.some((item) => item.inline) && (
                         <div className="flex flex-wrap items-center gap-1">
                           {section.items
                             .filter((item) => item.inline)
                             .map((item, index, arr) => (
-                              <span key={item.label + item.href} className="inline-flex items-center">
-                                <Link
-                                  href={item.href ?? "/"}
-                                  className="transition-opacity hover:opacity-70"
-                                >
-                                  {item.label}
-                                </Link>
+                              <span key={item.label + (item.href || "")} className="inline-flex items-center">
+                                {item.href ? (
+                                  <Link
+                                    href={item.href}
+                                    className="transition-opacity hover:opacity-70"
+                                  >
+                                    {item.label}
+                                  </Link>
+                                ) : (
+                                  <span>{item.label}</span>
+                                )}
                                 {index < arr.length - 1 && <span>,&nbsp;</span>}
                               </span>
                             ))}
